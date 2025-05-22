@@ -7,13 +7,13 @@ users:
   - name: azureuser
     sudo: ['ALL=(ALL) NOPASSWD:ALL']
     shell: /bin/bash
-    ssh_pwauth: true
-    lock_passwd: false
+    ssh_pwauth: false
+    lock_passwd: true
     ssh_authorized_keys:
       - ${ssh_public_key}
 
 # Cấu hình SSH
-ssh_pwauth: true
+ssh_pwauth: false
 disable_root: true
 
 # Cài đặt các package cơ bản
