@@ -53,15 +53,15 @@ output "location" {
   value       = var.location
 }
 
-output "storage_account_name" {
-  description = "The name of the storage account for boot diagnostics"
-  value       = azurerm_storage_account.boot_diagnostics.name
-}
+# output "storage_account_name" {
+#   description = "The name of the storage account for boot diagnostics"
+#   value       = azurerm_storage_account.boot_diagnostics.name
+# }
 
-output "storage_account_id" {
-  description = "The ID of the storage account for boot diagnostics"
-  value       = azurerm_storage_account.boot_diagnostics.id
-}
+# output "storage_account_id" {
+#   description = "The ID of the storage account for boot diagnostics"
+#   value       = azurerm_storage_account.boot_diagnostics.id
+# }
 
 output "admin_username" {
   description = "The admin username of the Virtual Machine"

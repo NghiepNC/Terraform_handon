@@ -14,14 +14,14 @@ variable "cloud_init_file" {
 }
 
 # Storage Account for boot diagnostics
-resource "azurerm_storage_account" "boot_diagnostics" {
-  name                     = "bootdiags${random_string.suffix.result}"
-  resource_group_name      = var.resource_group_name
-  location                 = var.location
-  account_tier             = "Standard"
-  account_replication_type = "LRS"
-  tags                     = var.tags
-}
+# resource "azurerm_storage_account" "boot_diagnostics" {
+#   name                     = "bootdiags${random_string.suffix.result}"
+#   resource_group_name      = var.resource_group_name
+#   location                 = var.location
+#   account_tier             = "Standard"
+#   account_replication_type = "LRS"
+#   tags                     = var.tags
+# }
 
 # Virtual Machine
 resource "azurerm_linux_virtual_machine" "vm" {
@@ -60,9 +60,9 @@ resource "azurerm_linux_virtual_machine" "vm" {
     ssh_public_key = var.ssh_public_key
   }))
 
-  boot_diagnostics {
-    storage_account_uri = azurerm_storage_account.boot_diagnostics.primary_blob_endpoint
-  }
+  # boot_diagnostics {
+  #   storage_account_uri = azurerm_storage_account.boot_diagnostics.primary_blob_endpoint
+  # }
 }
 
 # Random string for unique storage account name
