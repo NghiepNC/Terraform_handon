@@ -87,4 +87,19 @@ output "admin_username" {
   description = "The admin username of the Virtual Machine"
   value       = module.vm.admin_username
   sensitive   = true
+}
+
+output "vm2_public_ip" {
+  description = "The public IP address of VM2"
+  value       = module.vm2.vm2_public_ip
+}
+
+output "vm2_private_ip" {
+  description = "The private IP address of VM2"
+  value       = module.vm2.vm2_private_ip
+}
+
+output "vm2_name" {
+  description = "The name of VM2"
+  value       = module.vm2.vm2_name
 } 

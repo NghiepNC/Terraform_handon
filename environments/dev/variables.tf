@@ -100,4 +100,52 @@ variable "ssh_public_key" {
   description = "SSH public key for VM authentication"
   type        = string
   default     = null
+}
+
+variable "vm2_name" {
+  description = "Name of the second virtual machine"
+  type        = string
+  default     = "vm-server-002"
+}
+
+variable "vm2_size" {
+  description = "Size of the second virtual machine"
+  type        = string
+  default     = "Standard_B4ms"
+}
+
+variable "vm2_admin_username" {
+  description = "Username for the second VM"
+  type        = string
+  default     = "azureuser"
+}
+
+variable "vm2_admin_password" {
+  description = "Password for the second VM"
+  type        = string
+  sensitive   = true
+}
+
+variable "vm2_os_version" {
+  description = "OS version for the second VM"
+  type        = string
+  default     = "18.04-LTS"
+}
+
+variable "vm2_nic_name" {
+  description = "NIC name for the second VM"
+  type        = string
+  default     = "nic-vm-server-002"
+}
+
+variable "vm2_public_ip_name" {
+  description = "Public IP name for the second VM"
+  type        = string
+  default     = "pip-vm-server-002"
+}
+
+variable "vm2_dns_label_prefix" {
+  description = "DNS label prefix for the second VM"
+  type        = string
+  default     = "vm-server-002"
 } 
