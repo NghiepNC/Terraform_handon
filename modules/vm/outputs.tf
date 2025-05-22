@@ -8,19 +8,39 @@ output "vm_name" {
   value       = azurerm_linux_virtual_machine.vm.name
 }
 
-output "vm_public_ip" {
-  description = "The public IP address of the Virtual Machine"
-  value       = azurerm_public_ip.vm_public_ip.ip_address
-}
-
 output "vm_private_ip" {
   description = "The private IP address of the Virtual Machine"
-  value       = azurerm_network_interface.vm_nic.private_ip_address
+  value       = azurerm_linux_virtual_machine.vm.private_ip_address
+}
+
+output "vm_public_ip" {
+  description = "The public IP address of the Virtual Machine"
+  value       = azurerm_linux_virtual_machine.vm.public_ip_address
 }
 
 output "vm_dns_name" {
   description = "The DNS name of the Virtual Machine"
-  value       = azurerm_public_ip.vm_public_ip.fqdn
+  value       = azurerm_linux_virtual_machine.vm.public_ip_address
+}
+
+output "vm_username" {
+  description = "The username of the Virtual Machine"
+  value       = azurerm_linux_virtual_machine.vm.admin_username
+}
+
+output "vm_size" {
+  description = "The size of the Virtual Machine"
+  value       = azurerm_linux_virtual_machine.vm.size
+}
+
+output "vm_os_disk" {
+  description = "The OS disk of the Virtual Machine"
+  value       = azurerm_linux_virtual_machine.vm.os_disk
+}
+
+output "vm_source_image" {
+  description = "The source image of the Virtual Machine"
+  value       = azurerm_linux_virtual_machine.vm.source_image_reference
 }
 
 output "resource_group_name" {
@@ -31,36 +51,6 @@ output "resource_group_name" {
 output "location" {
   description = "The location of the resources"
   value       = var.location
-}
-
-output "vnet_name" {
-  description = "The name of the virtual network"
-  value       = azurerm_virtual_network.vm_vnet.name
-}
-
-output "vnet_id" {
-  description = "The ID of the virtual network"
-  value       = azurerm_virtual_network.vm_vnet.id
-}
-
-output "subnet_name" {
-  description = "The name of the subnet"
-  value       = azurerm_subnet.vm_subnet.name
-}
-
-output "subnet_id" {
-  description = "The ID of the subnet"
-  value       = azurerm_subnet.vm_subnet.id
-}
-
-output "nsg_name" {
-  description = "The name of the network security group"
-  value       = azurerm_network_security_group.vm_nsg.name
-}
-
-output "nsg_id" {
-  description = "The ID of the network security group"
-  value       = azurerm_network_security_group.vm_nsg.id
 }
 
 output "storage_account_name" {
