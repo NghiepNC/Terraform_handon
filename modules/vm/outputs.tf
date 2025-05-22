@@ -67,4 +67,24 @@ output "admin_username" {
   description = "The admin username of the Virtual Machine"
   value       = var.admin_username
   sensitive   = true
+}
+
+output "vm2_id" {
+  description = "The ID of the second Virtual Machine"
+  value       = azurerm_linux_virtual_machine.vm.id
+}
+
+output "vm2_name" {
+  description = "The name of the second Virtual Machine"
+  value       = azurerm_linux_virtual_machine.vm.name
+}
+
+output "vm2_private_ip" {
+  description = "The private IP address of the second Virtual Machine"
+  value       = azurerm_linux_virtual_machine.vm.private_ip_address
+}
+
+output "vm2_public_ip" {
+  description = "The public IP address of the second Virtual Machine"
+  value       = azurerm_linux_virtual_machine.vm.public_ip_address
 } 

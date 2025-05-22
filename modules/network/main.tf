@@ -9,6 +9,17 @@ resource "azurerm_public_ip" "vm_public_ip" {
   tags                = var.tags
 }
 
+# Public IP for VM2
+resource "azurerm_public_ip" "vm2_public_ip" {
+  name                = var.vm2_public_ip_name
+  resource_group_name = var.resource_group_name
+  location            = var.location
+  allocation_method   = var.public_ip_allocation_method
+  sku                 = var.public_ip_sku
+  domain_name_label   = var.vm2_dns_label_prefix
+  tags                = var.tags
+}
+
 # Network Security Group
 resource "azurerm_network_security_group" "vm_nsg" {
   name                = "nsg-${var.virtual_network_name}"
@@ -61,8 +72,29 @@ resource "azurerm_network_interface" "vm_nic" {
   }
 }
 
+# Network Interface for VM2
+resource "azurerm_network_interface" "vm2_nic" {
+  name                = var.vm2_nic_name
+  location            = var.location
+  resource_group_name = var.resource_group_name
+  tags                = var.tags
+
+  ip_configuration {
+    name                          = "ipconfig1"
+    subnet_id                     = azurerm_subnet.vm_subnet.id
+    private_ip_address_allocation = "Dynamic"
+    public_ip_address_id          = azurerm_public_ip.vm2_public_ip.id
+  }
+}
+
 # Associate NSG with NIC
 resource "azurerm_network_interface_security_group_association" "nsg_association" {
   network_interface_id      = azurerm_network_interface.vm_nic.id
+  network_security_group_id = azurerm_network_security_group.vm_nsg.id
+}
+
+# Associate NSG with NIC for VM2
+resource "azurerm_network_interface_security_group_association" "vm2_nsg_association" {
+  network_interface_id      = azurerm_network_interface.vm2_nic.id
   network_security_group_id = azurerm_network_security_group.vm_nsg.id
 } 

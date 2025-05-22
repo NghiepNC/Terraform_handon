@@ -61,4 +61,19 @@ variable "tags" {
   description = "Tags to apply to all resources"
   type        = map(string)
   default     = {}
+}
+
+variable "vm2_nic_name" {
+  description = "NIC name for the second VM"
+  type        = string
+}
+
+variable "vm2_public_ip_name" {
+  description = "Public IP name for the second VM"
+  type        = string
+}
+
+variable "vm2_dns_label_prefix" {
+  description = "DNS label prefix for the second VM"
+  type        = string
 } 

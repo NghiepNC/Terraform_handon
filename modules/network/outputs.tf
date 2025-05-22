@@ -13,9 +13,19 @@ output "public_ip_address" {
   value       = azurerm_public_ip.vm_public_ip.ip_address
 }
 
+output "public_ip_address_vm2" {
+  description = "The public IP address for VM2"
+  value       = azurerm_public_ip.vm2_public_ip.ip_address
+}
+
 output "network_interface_id" {
   description = "The ID of the Network Interface"
   value       = azurerm_network_interface.vm_nic.id
+}
+
+output "network_interface_id_vm2" {
+  description = "The ID of the Network Interface for VM2"
+  value       = azurerm_network_interface.vm2_nic.id
 }
 
 output "network_security_group_id" {

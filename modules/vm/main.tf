@@ -7,6 +7,12 @@ terraform {
   }
 }
 
+variable "cloud_init_file" {
+  description = "Path to cloud-init file"
+  type        = string
+  default     = "cloud-init.yml"
+}
+
 # Storage Account for boot diagnostics
 resource "azurerm_storage_account" "boot_diagnostics" {
   name                     = "bootdiags${random_string.suffix.result}"
@@ -49,7 +55,8 @@ resource "azurerm_linux_virtual_machine" "vm" {
     public_key = var.ssh_public_key
   }
 
-  custom_data = base64encode(templatefile("${path.module}/cloud-init.yml", {
+  custom_data = base64encode(templatefile("${path.module}/${var.cloud_init_file}", {
+    admin_username = var.admin_username
     ssh_public_key = var.ssh_public_key
   }))
 
