@@ -95,4 +95,9 @@ variable "tags" {
 variable "my_ip" {
   description = "Your IP address to allow SSH access"
   type        = string
+}
+
+variable "ssh_public_key" {
+  description = "SSH public key for VM authentication"
+  type        = string
 } 

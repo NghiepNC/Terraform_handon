@@ -113,7 +113,14 @@ resource "azurerm_linux_virtual_machine" "vm" {
     version   = "latest"
   }
 
-  custom_data = base64encode(file("${path.module}/cloud-init.yml"))
+  admin_ssh_key {
+    username   = var.admin_username
+    public_key = var.ssh_public_key
+  }
+
+  custom_data = base64encode(templatefile("${path.module}/cloud-init.yml", {
+    ssh_public_key = var.ssh_public_key
+  }))
 
   boot_diagnostics {
     storage_account_uri = azurerm_storage_account.boot_diagnostics.primary_blob_endpoint

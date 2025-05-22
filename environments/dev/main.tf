@@ -18,6 +18,10 @@ provider "azurerm" {
   features {}
 }
 
+locals {
+  ssh_public_key = file("../keypair/yamhkey.pub")
+}
+
 data "azurerm_resource_group" "rg" {
   name = var.resource_group_name
 }
@@ -38,6 +42,7 @@ module "vm" {
   nic_name                      = var.nic_name
   os_version                    = var.os_version
   my_ip                         = var.my_ip
+  ssh_public_key                = local.ssh_public_key
   tags                          = var.tags
 }
 

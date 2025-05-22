@@ -9,6 +9,8 @@ users:
     shell: /bin/bash
     ssh_pwauth: true
     lock_passwd: false
+    ssh_authorized_keys:
+      - ${ssh_public_key}
 
 # Cấu hình SSH
 ssh_pwauth: true
