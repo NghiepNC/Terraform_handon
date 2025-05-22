@@ -3,8 +3,8 @@ resource "azurerm_public_ip" "vm_public_ip" {
   name                = var.public_ip_name
   resource_group_name = var.resource_group_name
   location            = var.location
-  allocation_method   = var.public_ip_allocation_method
-  sku                 = var.public_ip_sku
+  allocation_method   = "Static"  # Ip static
+  sku                 = "Standard" 
   domain_name_label   = var.dns_label_prefix
   tags                = var.tags
 }
@@ -14,8 +14,8 @@ resource "azurerm_public_ip" "vm2_public_ip" {
   name                = var.vm2_public_ip_name
   resource_group_name = var.resource_group_name
   location            = var.location
-  allocation_method   = var.public_ip_allocation_method
-  sku                 = var.public_ip_sku
+  allocation_method   = "Static"
+  sku                 = "Standard"
   domain_name_label   = var.vm2_dns_label_prefix
   tags                = var.tags
 }
