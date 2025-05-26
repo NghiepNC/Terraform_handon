@@ -23,6 +23,20 @@ docker-compose.override.yml
 *.key
 *.crt
 
+# SSH and Keypair files
+*.pem
+*.key
+*.pub
+id_rsa*
+*.ppk
+known_hosts
+authorized_keys
+*.p8
+*.p12
+*.pfx
+*.keypair
+*.keystore
+
 # Logs
 *.log
 logs/
